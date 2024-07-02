@@ -1,0 +1,24 @@
+<div class="table-container">
+<h2>Palindrome Table</h2>
+<table>
+  <tr style="background-color: lightgray">
+    <th>Text</th>
+    <th>Is Pure Palindrome?</th>
+    <th>Is Palindrome?</th>
+  </tr>
+
+@for (item of dataSource; track item.text) {
+  <tr [ngClass]="{
+    'green-background': item.is_pure_palindrome,
+    'yellow-background': (!item.is_pure_palindrome && item.is_palindrome),
+    'white-background': (!item.is_pure_palindrome && !item.is_palindrome)
+  }"> 
+    <th>{{ item.text }}</th>
+    <th>@if (item.is_pure_palindrome) { Yes } @else { No } </th>
+    <th>@if (item.is_palindrome) { Yes } @else { No } </th>
+  </tr>
+} @empty {
+    <tr>There are no items.</tr>
+}
+</table>
+</div>
